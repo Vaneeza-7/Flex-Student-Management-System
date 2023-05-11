@@ -1,4 +1,4 @@
-﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
 
 <!DOCTYPE html>
 
@@ -11,8 +11,8 @@
 <%--    <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css">--%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
-<body style="background-color:lavender">
-<div class="container mx-auto" style="background-color:lavender ; margin:0 auto; margin-left:auto; margin-right:auto" > 
+<body style="background-color:dodgerblue; height: 800px;">
+<div class="container mx-auto" style="background-color:lavenderblush ; margin:0 auto; margin-left:auto; margin-right:auto ;  height: 700px"> 
   <h2>LogIn Form<img src="images/flex-logo-blue.png" alt="" float="left" padding= "70px" margin="5px" style="margin-left:auto; margin-right:auto" ></h2>
       <div>&nbsp;
           <form id="form1" runat="server" style="margin:0 auto; margin-left:auto; margin-right:auto" >
