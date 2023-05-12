@@ -32,15 +32,22 @@
            
                 <label for="role">Role:</label>
                 <asp:DropDownList ID="ddlRole" runat="server">
-                    <asp:ListItem Text="Student" Value="student"></asp:ListItem>
-                    <asp:ListItem Text="Faculty" Value="faculty"></asp:ListItem>
-                    <asp:ListItem Text="Admin" Value="admin"></asp:ListItem>
+                    <asp:ListItem Text="Student" Value="student">student</asp:ListItem>
+                    <asp:ListItem Text="Faculty" Value="faculty">faculty</asp:ListItem>
+                    <asp:ListItem Text="Admin" Value="admin">admin</asp:ListItem>
                 </asp:DropDownList>
       </div>
-      <a href="Home page.html"><button type="button" class="btn btn-primary" id="Button1" runat="server" text="Sign In" onclick="btnSignIn_Click">Sign In</button></a>
+      <button type="button" class="btn btn-primary" id="Button1" runat="server" text="Sign In" onclick="btnSignIn_Click" UseSubmitBehavior="false">Sign In</button>
+               
+             
   </form>
+      
        </div>
 </div>
         <%-- <asp:Button ID="Button1" runat="server" Text="Sign In" OnClick="btnSignIn_Click" />--%>      
+    <p>
+          <asp:HyperLink ID="HyperLink1" runat="server" Target="registration.aspx" ForeColor="White" NavigateUrl="~/registration.aspx">Not a member? Create Account</asp:HyperLink>
+      
+       </p>
 </body>
 </html>

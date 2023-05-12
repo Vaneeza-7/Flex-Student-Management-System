@@ -15,16 +15,16 @@ public partial class login : System.Web.UI.Page
         //    Response.Write(htmlContent);
         //}
     }
-   
-        protected void btnSignIn_Click(object sender, EventArgs e)
-        {
+
+    protected void btnSignIn_Click(object sender, EventArgs e)
+    {
         string id = Request.Form["exampleInputId"];
         string username = Request.Form["exampleInputUsername2"];
         string password = Request.Form["exampleInputPassword1"];
         string role = ddlRole.SelectedValue;
 
-        SqlConnection con = new SqlConnection("");
-        SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Users WHERE username = @username AND password = @password AND role = @role", con);
+        SqlConnection con = new SqlConnection("Data Source=LAPTOP-BQUID6TK\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
+        SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM flexuser WHERE username = @username AND password = @password AND role = @role", con);
         cmd.Parameters.AddWithValue("@username", username);
         cmd.Parameters.AddWithValue("@password", password);
         cmd.Parameters.AddWithValue("@role", role);
@@ -37,20 +37,21 @@ public partial class login : System.Web.UI.Page
         {
             if (role == "student")
             {
-                Response.Redirect("StudentDashboard.aspx");
+                Response.Redirect("StudentProfile.aspx");
             }
             else if (role == "faculty")
             {
-                Response.Redirect("FacultyDashboard.aspx");
+                Response.Redirect("facultyProfile.aspx");
             }
             else if (role == "admin")
             {
-                Response.Redirect("AdminDashboard.aspx");
+                Response.Redirect("AcademicOffice.aspx");
             }
         }
-        //else
-        //{
-        //    lblError.Text = "Invalid username, password, or role.";
-        //}
+        else
+        {
+            Response.Redirect("registration.aspx");
+        }
     }
+
 }
