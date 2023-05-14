@@ -9,10 +9,33 @@
         #form1 {
             height: 1263px;
         }
+        .custom-table {
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+.custom-table th, .custom-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.custom-table th {
+    background-color: #f5f5f5;
+    text-align: left;
+}
+
+.custom-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.custom-table tr:hover {
+    background-color: #ddd;
+}
+
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form2" runat="server">
 
         <div style="margin-left: 4px; background-color: cornflowerblue; height:60px;">
 
@@ -35,9 +58,11 @@
             </p>
 
             <p style="margin-left: 95px; margin-right: 70px; border: solid; border-color: black; border-width:thin;">
-
+                
+                <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
+                
                 <asp:Label ID="Label5" runat="server" Font-Bold="False" Font-Names="Calibri" Font-Size="Large" Text="CL1000" Width="200px" style="margin-left: 19px"></asp:Label>
-
+                    
             &nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label6" runat="server" Font-Names="Calibri" Font-Size="Large" Text="Intro. to Info. and Comm. Tech." Width="434px"></asp:Label>
 
