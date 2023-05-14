@@ -1,18 +1,10 @@
-﻿﻿<%@ Page Language="C#" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StudentProfile.aspx.cs" Inherits="StudentProfile"%>
 
 <!DOCTYPE html>
 <script runat="server">
-
-    protected void Page_Load(object sender, EventArgs e)
-    {
-
-    }
-
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
         string value = DropDownList1.SelectedValue;
-
-       
         if (value == "Course Registration")
         {
             Response.Redirect("courseRegistration.aspx");
@@ -24,15 +16,15 @@
         }
         else if(value == "Marks")
         {
-             Response.Redirect("marks.aspx");
+            Response.Redirect("marks.aspx");
         }
         else if(value == "Transcript")
         {
-             Response.Redirect("transcript.aspx");
+            Response.Redirect("transcript.aspx");
         }
         else if(value == "Feedback")
         {
-             Response.Redirect("feedback.aspx");
+            Response.Redirect("feedback.aspx");
         }
 
     }
@@ -70,12 +62,12 @@
                 <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Large" Text="University Information" ForeColor="White"></asp:Label>
 &nbsp;&nbsp;</p>
             <p style="margin-left: 80px">
-            &nbsp;&nbsp;
+         &nbsp;&nbsp;
                 <asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Registration No. :"></asp:Label>
-                <asp:TextBox ID="TextBox1" runat="server" style="margin-left: 25px"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;<asp:Label ID="Label18" runat="server"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="User Name: "></asp:Label>
-                <asp:TextBox ID="TextBox2" runat="server" style="margin-left: 18px"></asp:TextBox>
+                <asp:TextBox ID="TextBox2" runat="server" style="margin-left: 18px" ForeColor="Black"></asp:TextBox>
             </p>
         </div>
         <div style="border: thin solid #1E90FF; margin-left:40px; margin-top: 10px; height: 262px; width: 1177px;">
@@ -90,33 +82,33 @@
             <p style="margin-left: 80px">
 
                 <asp:Label ID="Label8" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Name: "></asp:Label>
-                <asp:TextBox ID="TextBox3" runat="server" style="margin-left: 12px"></asp:TextBox>
+                <asp:TextBox ID="TextBox3" runat="server" style="margin-left: 12px" ForeColor="Black"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="DOB: "></asp:Label>
-                <asp:TextBox ID="TextBox4" runat="server" style="margin-left: 22px"></asp:TextBox>
+                <asp:TextBox ID="TextBox4" runat="server" style="margin-left: 22px" ForeColor="Black"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Gender: "></asp:Label>
-                <asp:TextBox ID="TextBox5" runat="server" style="margin-left: 18px"></asp:TextBox>
+                <asp:TextBox ID="TextBox5" runat="server" style="margin-left: 18px" ForeColor="Black"></asp:TextBox>
 
             </p>
 
             <p style="margin-left: 80px; width: 1092px;">
 
                 <asp:Label ID="Label11" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="CNIC: "></asp:Label>
-                <asp:TextBox ID="TextBox6" runat="server" style="margin-left: 11px"></asp:TextBox>
+                <asp:TextBox ID="TextBox6" runat="server" style="margin-left: 11px">61101-56409828</asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Nationality: "></asp:Label>
-                <asp:TextBox ID="TextBox7" runat="server" style="margin-left: 15px"></asp:TextBox>
+                <asp:TextBox ID="TextBox7" runat="server" style="margin-left: 15px" ForeColor="Black"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label13" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Email: "></asp:Label>
-                <asp:TextBox ID="TextBox8" runat="server" style="margin-left: 7px"></asp:TextBox>
+                <asp:TextBox ID="TextBox8" runat="server" style="margin-left: 7px">flexuser@nu.edu.pk</asp:TextBox>
 
             </p>
 
             <p style="margin-left: 80px; width: 1091px;">
 
                 <asp:Label ID="Label14" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Mobile No.: "></asp:Label>
-                <asp:TextBox ID="TextBox9" runat="server" style="margin-left: 16px"></asp:TextBox>
+                <asp:TextBox ID="TextBox9" runat="server" style="margin-left: 16px" ForeColor="Black"></asp:TextBox>
 
             </p>
 
@@ -134,7 +126,7 @@
             <p style="margin-left: 80px; width: 1096px;">
 
                 <asp:Label ID="Label16" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Address: "></asp:Label>
-                <asp:TextBox ID="TextBox10" runat="server" style="margin-left: 16px"></asp:TextBox>
+                <asp:TextBox ID="TextBox10" runat="server" style="margin-left: 16px">House 67 AK Brohi Road Islamabad</asp:TextBox>
             
             </p>
 
