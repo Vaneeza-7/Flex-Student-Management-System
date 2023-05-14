@@ -8,6 +8,9 @@ using System.Data.SqlClient;
 
 public partial class OfferCourses : System.Web.UI.Page
 {
+    // create a new table
+    Table table = new Table();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         List<string> codes = new List<string>();
@@ -42,10 +45,6 @@ public partial class OfferCourses : System.Web.UI.Page
         //    PlaceHolder1.Controls.Add(label);
         //}
 
-
-        // create a new table
-        Table table = new Table();
-
         // create table header row
         TableHeaderRow headerRow = new TableHeaderRow();
         TableHeaderCell headerCell1 = new TableHeaderCell();
@@ -75,6 +74,8 @@ public partial class OfferCourses : System.Web.UI.Page
             TableCell cell4 = new TableCell();
             TableCell cell5 = new TableCell();
             CheckBox checkBox = new CheckBox();
+            checkBox.ID = "checkBox" + i.ToString();
+            checkBox.AutoPostBack = false;
             cell1.Text = codes[i];
             cell2.Text = " "+cnames[i]+"  ";
             cell3.Text = types[i];
@@ -103,6 +104,43 @@ public partial class OfferCourses : System.Web.UI.Page
 
 
 
+
+
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        string userId = Request.Cookies["userId"].Value;
+        List<string> codes = new List<string>();
+        int codesIndex = 0;
+        for (int i = 0; i < table.Rows.Count; i++)
+        {
+                // Get the checkbox in the current row
+                CheckBox chk = (CheckBox)table.Rows[i].FindControl("checkBox" + i.ToString());
+
+            // If the checkbox is checked, retrieve the data from the other columns of the row
+            if (chk != null && chk.Checked)
+            {
+                if (table.Rows[i].Cells.Count > 0)
+                {
+                    codes.Add(table.Rows[i].Cells[0].Text);
+                    codesIndex++;
+                }
+            }
+        }
+            
+        
+
+        int reg = 0;
+        SqlConnection con = new SqlConnection("Data Source=LAPTOP-BQUID6TK\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
+        con.Open();
+        for (int i = 0; i < codes.Count; i++)
+        {
+            string query = "Insert into offers (cId, adId, regCount) values('" + codes[i] + "', '" + userId + "'," + reg +")";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.ExecuteNonQuery();
+        }
+        con.Close(); ;
 
 
     }
