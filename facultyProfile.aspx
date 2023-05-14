@@ -1,7 +1,9 @@
-﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AcademicOffice.aspx.cs" Inherits="AcademicOffice"%>
+﻿﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeFile="facultyProfile.aspx.cs" Inherits="facultyProfile"%>
 
 <!DOCTYPE html>
 <script runat="server">
+
+    
 
 </script>
 
@@ -22,7 +24,7 @@
         </div>
         <div style="margin-left: 40px;margin-top: 25px; height: 42px;">
 
-            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="X-Large" Text="Officer Profile"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="X-Large" Text="Faculty Profile"></asp:Label>
             <asp:Label ID="Label3" runat="server" Text="         |       "></asp:Label>
             <asp:Label ID="Label2" runat="server" Font-Names="Times New Roman" Font-Size="Small" Text="HOME"></asp:Label>
         
@@ -38,8 +40,8 @@
             <p style="margin-left: 80px">
            &nbsp;&nbsp;
                 <asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Registration No. :"></asp:Label>
-&nbsp;<asp:Label ID="Label18" runat="server"></asp:Label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<asp:Label ID="Label18" runat="server"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="User Name: "></asp:Label>
                 <asp:Label ID="Label19" runat="server"></asp:Label>
             </p>
@@ -56,11 +58,11 @@
             <p style="margin-left: 80px">
 
                 <asp:Label ID="Label8" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Name: "></asp:Label>
-&nbsp;&nbsp;&nbsp;<asp:Label ID="Label20" runat="server"></asp:Label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<asp:Label ID="Label20" runat="server"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="DOB: "></asp:Label>
-&nbsp;&nbsp;<asp:Label ID="Label21" runat="server"></asp:Label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;<asp:Label ID="Label21" runat="server"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Gender: "></asp:Label>
                 <asp:Label ID="Label22" runat="server"></asp:Label>
 
@@ -69,13 +71,13 @@
             <p style="margin-left: 80px; width: 1092px;">
 
                 <asp:Label ID="Label11" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="CNIC: "></asp:Label>
-&nbsp;&nbsp;&nbsp;<asp:Label ID="Label23" runat="server" Text="61101-12349875"></asp:Label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<asp:Label ID="Label23" runat="server" Text="21101-234568"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Nationality: "></asp:Label>
 &nbsp;<asp:Label ID="Label24" runat="server"></asp:Label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label13" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Email: "></asp:Label>
-                <asp:Label ID="Label25" runat="server" Text="flexadmin@gmai.com"></asp:Label>
+                <asp:Label ID="Label25" runat="server" Text="flexfaculty@gmail.com"></asp:Label>
 
             </p>
 
@@ -100,7 +102,7 @@
             <p style="margin-left: 80px; width: 1096px;">
 
                 <asp:Label ID="Label16" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Medium" Text="Address: "></asp:Label>
-                <asp:Label ID="Label27" runat="server" Text="Apartment 5 Buildling 2 Block C PWD Phase 2 Islamabad"></asp:Label>
+                <asp:Label ID="Label27" runat="server" Text="House 34 Block C DHA Phase 6 Islamabad"></asp:Label>
             
             </p>
 
@@ -110,14 +112,16 @@
         
             <p style="margin-left: 0px; background-color:DodgerBlue; width: 1180px; margin-top: 0px; height: 47px;">
            
-               <asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Large" ForeColor="White" Text="Authoritites:"></asp:Label>
+               <asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Names="Times New Roman" Font-Size="Large" ForeColor="White" Text="Tasks:"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             
                <asp:DropDownList ID="DropDownList1" runat="server" Font-Names="Times New Roman" Font-Size="Medium" Height="45px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="377px" AutoPostBack="True">
                  <asp:ListItem>Options</asp:ListItem>
-                 <asp:ListItem>Register Students</asp:ListItem>
-                 <asp:ListItem>Offer Courses</asp:ListItem>
-                 <asp:ListItem>Assign Instructors</asp:ListItem>
+                 <asp:ListItem>Manage Courses</asp:ListItem>
+                 <asp:ListItem>Manage Attendance</asp:ListItem>
+                 <asp:ListItem>Manage Marks</asp:ListItem>
+                 <asp:ListItem>Set Marks Distribution</asp:ListItem>
+                 <asp:ListItem>See Feedback</asp:ListItem>
                </asp:DropDownList>
 
            </p>
@@ -127,3 +131,4 @@
     </form>
 </body>
 </html>
+
