@@ -117,11 +117,11 @@
             
                <asp:DropDownList ID="DropDownList1" runat="server" Font-Names="Times New Roman" Font-Size="Medium" Height="45px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="377px" AutoPostBack="True">
                  <asp:ListItem>Options</asp:ListItem>
-                 <asp:ListItem>Manage Courses</asp:ListItem>
+                 <asp:ListItem>Generate Reports</asp:ListItem>
                  <asp:ListItem>Manage Attendance</asp:ListItem>
                  <asp:ListItem>Manage Marks</asp:ListItem>
                  <asp:ListItem>Set Marks Distribution</asp:ListItem>
-                 <asp:ListItem>See Feedback</asp:ListItem>
+                 <asp:ListItem>View Feedback</asp:ListItem>
                </asp:DropDownList>
 
            </p>

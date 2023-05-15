@@ -13,13 +13,13 @@ public partial class facultyProfile : System.Web.UI.Page
         string value = DropDownList1.SelectedValue;
 
 
-        if (value == "Manage Courses")
+        if (value == "Generate Reports")
         {
-            Response.Redirect("manageCourses.aspx");
+            Response.Redirect("facultyReports.aspx");
         }
         else if (value == "Manage Attendance")
         {
-            Response.Redirect("manageAttendance.aspx");
+            Response.Redirect("attendanceOptions.aspx");
 
         }
         else if (value == "Manage Marks")
@@ -30,9 +30,9 @@ public partial class facultyProfile : System.Web.UI.Page
         {
             Response.Redirect("marksDistribution.aspx");
         }
-        else if (value == "See Feedback")
+        else if (value == "View Feedback")
         {
-            Response.Redirect("seeFeedback.aspx");
+            Response.Redirect("viewFeedback.aspx");
         }
 
     }
