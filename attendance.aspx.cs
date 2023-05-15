@@ -14,10 +14,10 @@ public partial class attendance : System.Web.UI.Page
         List<string> cnames = new List<string>();
         List<string> sect = new List<string>();
         List<string> status = new List<string>();
-        //string userId = Request.Cookies["userId"].Value;
+        string userId = Request.Cookies["userId"].Value;
         SqlConnection con = new SqlConnection("Data Source=LAPTOP-BQUID6TK\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
         con.Open();
-        string query = "select attDate, cId, sect, status from attendance";//where id is user id
+        string query = "select attDate, cId, sect, status from attendance where attendance.studId='" + userId + "'";//where id is user id
         SqlCommand cmd = new SqlCommand(query, con);
 
         SqlDataReader reader = cmd.ExecuteReader();
@@ -83,7 +83,8 @@ public partial class attendance : System.Web.UI.Page
         table.Style.Add("width", "800px");
         table.Style.Add("height", "500px");
         table.Style.Add("background-color", "#f5f5f5");
-
+        table.Style.Add("margin-left", "auto");
+        table.Style.Add("margin-right", "auto");
 
         // add the table to a placeholder control
         PlaceHolder1.Controls.Add(table);

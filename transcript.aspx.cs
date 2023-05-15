@@ -18,12 +18,12 @@ public partial class transcript : System.Web.UI.Page
         List<string> grades = new List<string>();
         List<string> points = new List<string>();
         List<string> types = new List<string>();
+        List<string> sems = new List<string>();
 
-
-        //string userId = Request.Cookies["userId"].Value;
+        string userId = Request.Cookies["userId"].Value;
         SqlConnection con = new SqlConnection("Data Source=LAPTOP-BQUID6TK\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
         con.Open();
-        string query = "select code, cname, secId, crdHrs, grade, points, ctype from enrollment inner join course on course.code = enrollment.cId";//add cookie id
+        string query = "select code, cname, secId, crdHrs, grade, points, ctype, semester from enrollment inner join course on course.code = enrollment.cId where stuId = '"+userId+"'";//add cookie id
         SqlCommand cmd = new SqlCommand(query, con);
 
         SqlDataReader reader = cmd.ExecuteReader();
@@ -38,6 +38,7 @@ public partial class transcript : System.Web.UI.Page
             //float mark = (float)reader.GetFloat(5);
            // string point = mark.ToString();
             string type = reader.GetString(6);
+            string sms = reader.GetString(7);
             codes.Add(code);
             cnames.Add(cname);
             sects.Add(sec);
@@ -45,6 +46,7 @@ public partial class transcript : System.Web.UI.Page
             grades.Add(grd);
             //points.Add(point);
             types.Add(type);
+            sems.Add(sms);
         }
 
         //for (int i = 0; i < codes.Count; i++)
@@ -64,6 +66,7 @@ public partial class transcript : System.Web.UI.Page
         TableHeaderCell headerCell5 = new TableHeaderCell();
         //TableHeaderCell headerCell6 = new TableHeaderCell();
         TableHeaderCell headerCell7 = new TableHeaderCell();
+        TableHeaderCell headerCell8 = new TableHeaderCell();
         headerCell1.Text = "Code";
         headerCell2.Text = "Course Name";
         headerCell3.Text = "Section";
@@ -71,6 +74,7 @@ public partial class transcript : System.Web.UI.Page
         headerCell5.Text = "Grade";
         //headerCell6.Text = "Points";
         headerCell7.Text = "Type";
+        headerCell8.Text = "Semester";
         headerRow.Cells.Add(headerCell1);
         headerRow.Cells.Add(headerCell2);
         headerRow.Cells.Add(headerCell3);
@@ -78,6 +82,7 @@ public partial class transcript : System.Web.UI.Page
         headerRow.Cells.Add(headerCell5);
         //headerRow.Cells.Add(headerCell6);
         headerRow.Cells.Add(headerCell7);
+        headerRow.Cells.Add(headerCell8);
         table.Rows.Add(headerRow);
 
         // create table data rows
@@ -91,6 +96,7 @@ public partial class transcript : System.Web.UI.Page
             TableCell cell5 = new TableCell();
            // TableCell cell6 = new TableCell();
             TableCell cell7 = new TableCell();
+            TableCell cell8 = new TableCell();
             cell1.Text = codes[i];
             cell2.Text = " " + cnames[i] + "  ";
             cell3.Text = sects[i];
@@ -98,11 +104,14 @@ public partial class transcript : System.Web.UI.Page
             cell5.Text = grades[i];
            // cell6.Text = points[i];
             cell7.Text = types[i];
+            cell8.Text = sems[i];  
             dataRow.Cells.Add(cell1);
             dataRow.Cells.Add(cell2);
             dataRow.Cells.Add(cell3);
             dataRow.Cells.Add(cell4);
             dataRow.Cells.Add(cell5);
+            dataRow.Cells.Add(cell7);
+            dataRow.Cells.Add(cell8);
 
             table.Rows.Add(dataRow);
         }
@@ -120,6 +129,6 @@ public partial class transcript : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("cgpaGraph.aspx");
     }
 }
