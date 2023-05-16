@@ -6,12 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 
-public partial class AcademicOffice : System.Web.UI.Page
+public partial class Academic_Office : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         string userId = Request.Cookies["userId"].Value;
-        SqlConnection con = new SqlConnection("Data Source=LAPTOP-BQUID6TK\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-DGFGQKN\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
         con.Open();
         string qusername = "select username from flexuser where id='" + userId + "'";
         string qname = "select concat(firstName, ' ',lastName ) from flexuser where id='" + userId + "'";
@@ -66,6 +66,18 @@ public partial class AcademicOffice : System.Web.UI.Page
         else if (value == "Assign Instructors")
         {
             Response.Redirect("AssignInstructor.aspx");
+        }
+        else if (value == "Generate Students Report")
+        {
+            Response.Redirect("StudentReportPage.aspx");
+        }
+        else if (value == "Generate Instructors Report")
+        {
+            Response.Redirect("InstructorReportPage.aspx");
+        }
+        else if (value == "Generate Courses Report")
+        {
+            Response.Redirect("CourseReportPage.aspx");
         }
 
     }

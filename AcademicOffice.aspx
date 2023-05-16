@@ -1,4 +1,4 @@
-﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AcademicOffice.aspx.cs" Inherits="AcademicOffice"%>
+﻿<%@ Page Language="C#" CodeFile="AcademicOffice.aspx.cs" Inherits="Academic_Office" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -118,6 +118,9 @@
                  <asp:ListItem>Register Students</asp:ListItem>
                  <asp:ListItem>Offer Courses</asp:ListItem>
                  <asp:ListItem>Assign Instructors</asp:ListItem>
+                 <asp:ListItem>Generate Students Report</asp:ListItem>
+                 <asp:ListItem>Generate Instructors Report</asp:ListItem>
+                 <asp:ListItem>Generate Courses Report</asp:ListItem>
                </asp:DropDownList>
 
            </p>
