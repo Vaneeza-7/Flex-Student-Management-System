@@ -77,9 +77,6 @@ public partial class marks : System.Web.UI.Page
             TableCell cell3 = new TableCell();
             TableCell cell4 = new TableCell();
             TableCell cell5 = new TableCell();
-            CheckBox checkBox = new CheckBox();
-            checkBox.ID = "checkBox" + i.ToString();
-            checkBox.AutoPostBack = false;
             cell1.Text = codes[i];
             cell2.Text = " " + types[i] + "  ";
             cell3.Text = obtmarks[i];
@@ -108,6 +105,6 @@ public partial class marks : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("StudentProfile.aspx");
     }
 }

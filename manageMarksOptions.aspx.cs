@@ -66,10 +66,10 @@ public partial class manageMarksOptions : System.Web.UI.Page
         string id = DropDownList1.SelectedValue;
         string section = DropDownList2.SelectedValue;
         string evatype = DropDownList3.SelectedValue;
-        HttpCookie courseDistrIdCookie = new HttpCookie("courseDistrid", id);
-        Response.Cookies.Add(courseDistrIdCookie);
-        HttpCookie sectDistrIdCookie = new HttpCookie("sectDistrid", section);
-        Response.Cookies.Add(sectDistrIdCookie);
+        HttpCookie courseManCookie = new HttpCookie("courseMan", id);
+        Response.Cookies.Add(courseManCookie);
+        HttpCookie sectManCookie = new HttpCookie("sectMan", section);
+        Response.Cookies.Add(sectManCookie);
         HttpCookie evatypeCookie = new HttpCookie("evatype", evatype);
         Response.Cookies.Add(evatypeCookie);
 
