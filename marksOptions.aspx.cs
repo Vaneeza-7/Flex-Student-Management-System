@@ -19,24 +19,32 @@ public partial class marksOptions : System.Web.UI.Page
         SqlDataAdapter adapter = new SqlDataAdapter(query1, con);
         DataTable table = new DataTable();
         adapter.Fill(table);
+        if (!IsPostBack)
+        {
+            // Bind the drop-down list to the data source
 
-        // Bind the data to the drop-down menu
-        DropDownList1.DataSource = table;
-        DropDownList1.DataTextField = "cId";
-        DropDownList1.DataValueField = "cId";
-        DropDownList1.DataBind();
-
+            // Bind the data to the drop-down menu
+            DropDownList1.DataSource = table;
+            DropDownList1.DataTextField = "cId";
+            DropDownList1.DataValueField = "cId";
+            DropDownList1.DataBind();
+        }
         string query2 = "select secId from enrollment inner join teaches on teaches.cId = enrollment.cId and teaches.tId = '" + userId + "'";
         // Execute the query and retrieve data into a data table
         SqlDataAdapter adapter2 = new SqlDataAdapter(query2, con);
         DataTable table2 = new DataTable();
         adapter2.Fill(table2);
 
-        // Bind the data to the drop-down menu
-        DropDownList2.DataSource = table2;
-        DropDownList2.DataTextField = "secId";
-        DropDownList2.DataValueField = "secId";
-        DropDownList2.DataBind();
+        if (!IsPostBack)
+        {
+            // Bind the drop-down list to the data source
+
+            // Bind the data to the drop-down menu
+            DropDownList2.DataSource = table2;
+            DropDownList2.DataTextField = "secId";
+            DropDownList2.DataValueField = "secId";
+            DropDownList2.DataBind();
+        }
     }
 
     protected void Button2_Click(object sender, EventArgs e)
