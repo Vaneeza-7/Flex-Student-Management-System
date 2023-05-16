@@ -16,11 +16,11 @@ public partial class manageAttendance : System.Web.UI.Page
         List<string> stdid = new List<string>();
         string userId = Request.Cookies["userId"].Value;
         string dated = Request.Cookies["dateAtt"].Value;
-        string crId = Request.Cookies["courseid"].Value;
-        string scId = Request.Cookies["sectid"].Value;
+        string crrId = Request.Cookies["courseid"].Value;
+        string sccId = Request.Cookies["sectid"].Value;
         SqlConnection con = new SqlConnection("Data Source=LAPTOP-BQUID6TK\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
         con.Open();
-        string query = "select stuId from enrollment inner join teaches on teaches.cId = enrollment.cId where enrollment.cId ='" + crId + "' and enrollment.secId ='" + scId + "' and teaches.tId ='" + userId + "'";
+        string query = "select stuId from enrollment inner join teaches on teaches.cId = enrollment.cId where enrollment.cId ='" + crrId + "' and enrollment.secId ='" + sccId + "' and teaches.tId ='" + userId + "'";
         SqlCommand cmd = new SqlCommand(query, con);
         SqlDataReader reader = cmd.ExecuteReader();
 
@@ -69,8 +69,8 @@ public partial class manageAttendance : System.Web.UI.Page
             dropDownList.Items.Add("Leave");
             cell1.Text = stdid[i];
             cell2.Text = dated;
-            cell3.Text = crId;
-            cell4.Text = scId;
+            cell3.Text = crrId;
+            cell4.Text = sccId;
             cell5.Controls.Add(dropDownList);
             dataRow.Cells.Add(cell1);
             dataRow.Cells.Add(cell2);
@@ -98,6 +98,50 @@ public partial class manageAttendance : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+        SqlConnection con = new SqlConnection("Data Source=LAPTOP-BQUID6TK\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
+        con.Open();
 
+        string userId = Request.Cookies["userId"].Value;
+        string dated = Request.Cookies["dateAtt"].Value;
+        string crrId = Request.Cookies["courseid"].Value;
+        string sccId = Request.Cookies["sectid"].Value;
+        List<string> students = new List<string>();
+        List<string> statuses = new List<string>();
+
+
+        int codesIndex = 0;
+        for (int i = 0; i < table.Rows.Count; i++)
+        {
+            DropDownList ddl = table.Rows[i].FindControl("dropDownList" + i.ToString()) as DropDownList;
+            if (ddl != null)
+            {
+                string selectedValue = ddl.SelectedValue;
+                //if (table.Rows[i].Cells.Count > 0)
+                //{
+                    students.Add(table.Rows[i+1].Cells[0].Text); //was adding the header row in list as well
+                    //Label2.Text = students[i];
+                    statuses.Add(selectedValue);
+                    //additional here for semester and year /we can make cookie from previous as well
+                    codesIndex++;
+                //}
+            }
+
+        }
+
+        for (int i = 0; i < students.Count; i++)
+        {
+            try
+            {
+                string query = "insert into attendance(attDate, studId, tId, cId, sect, status) values('" + dated + "', '" + students[i] + "','" + userId + "','" + crrId + "', '" + sccId + "','" + statuses[i] + "')";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Label2.Text = "Operation not successful: "+ex;
+            }
+        }
+
+        con.Close();
     }
 }
