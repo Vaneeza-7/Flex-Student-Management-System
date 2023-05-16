@@ -22,8 +22,10 @@ public partial class _Default : System.Web.UI.Page
     {
         string idR = TextBox1.Text;
         string passwordR = TextBox2.Text;
-        //string roleR = ddlRole.SelectedValue;
-
+        HttpCookie userIdCookie = new HttpCookie("userId", idR);
+        Response.Cookies.Add(userIdCookie);
+        HttpCookie tIdCookie = new HttpCookie("tId", idR);
+        Response.Cookies.Add(tIdCookie);
         SqlConnection con = new SqlConnection("Data Source=LAPTOP-BQUID6TK\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
         con.Open();
         string qRole = "select role from flexuser where id='" + idR + "' AND password = '" + passwordR + "'";
@@ -31,6 +33,8 @@ public partial class _Default : System.Web.UI.Page
         SqlCommand cmd1 = new SqlCommand(qRole, con);
 
         SqlDataReader res = cmd.ExecuteReader();
+
+
 
         if (res.HasRows)
         {
@@ -57,6 +61,8 @@ public partial class _Default : System.Web.UI.Page
             Response.Redirect("registration.aspx");
         }
         con.Close();
+
+
 
     }
 
