@@ -45,7 +45,6 @@ public partial class marksDistribution : System.Web.UI.Page
         TableHeaderCell headerCell2 = new TableHeaderCell();
         TableHeaderCell headerCell3 = new TableHeaderCell();
         TableHeaderCell headerCell4 = new TableHeaderCell();
-        TableHeaderCell headerCell5 = new TableHeaderCell();
         headerCell1.Text = "Evaluation Type";
         headerCell2.Text = "Weightage";
         headerCell3.Text = "Total Marks";
@@ -80,6 +79,33 @@ public partial class marksDistribution : System.Web.UI.Page
 
             table.Rows.Add(dataRow);
         }
+
+        TableRow newRow = new TableRow();
+        TableCell newCell1 = new TableCell();
+        TableCell newCell2 = new TableCell();
+        TableCell newCell3 = new TableCell();
+        TableCell newCell4 = new TableCell();
+        newCell4.Text = courseDistrid;
+
+        TextBox evalBox = new TextBox();
+        evalBox.ID = "evalBox";
+        newCell1.Controls.Add(evalBox);
+
+        TextBox weightBox = new TextBox();
+        weightBox.ID = "weightBox";
+        weightBox.Attributes["type"] = "number";
+        newCell2.Controls.Add(weightBox);
+
+        TextBox marksBox = new TextBox();
+        marksBox.ID = "marksBox";
+        marksBox.Attributes["type"] = "number";
+        newCell3.Controls.Add(marksBox);
+
+        newRow.Cells.Add(newCell1);
+        newRow.Cells.Add(newCell2);
+        newRow.Cells.Add(newCell3);
+        newRow.Cells.Add(newCell4);
+        table.Rows.Add(newRow);
 
         table.CssClass = "custom-table";
         table.Style.Add("width", "800px");
@@ -152,40 +178,6 @@ public partial class marksDistribution : System.Web.UI.Page
             }
         }
 
-
-
-        //if (table.Rows.Count > 0) //header row not included
-        //{
-        //    TextBox myTextBox = (TextBox)table.Rows[table.Rows.Count-1].Cells[0].FindControl("evalBox");
-
-        //    if (myTextBox != null)
-        //    {
-        //        textBoxValue = myTextBox.Text;
-        //    }
-
-        //    TextBox weightBox = (TextBox)table.Rows[table.Rows.Count-1].Cells[1].FindControl("weightBox");
-        //    weightBoxValue = int.Parse(weightBox.Text);
-        //    //if (int.TryParse(weightBox.Text, out weightBoxValue))
-        //    //{
-        //    //    weightBoxValue = int.Parse(weightBox.Text);
-        //    //}
-        //    //else
-        //    //{
-        //    //    Label2.Text = "Could not convert weightage.";
-        //    //}
-
-        //    TextBox marksBox = (TextBox)table.Rows[table.Rows.Count-1].Cells[2].FindControl("marksBox");
-        //    marksBoxValue = int.Parse(marksBox.Text);
-        //    //if (int.TryParse(marksBox.Text, out marksBoxValue))
-        //    //{
-        //    //    marksBoxValue = int.Parse(marksBox.Text);
-        //    //}
-        //    //else
-        //    //{
-        //    //    Label2.Text = "Could not convert marks.";
-        //    //}
-        //}
-
         string query ="insert into evaluation(evalType, weightage, totalMarks, cId) values ('" + textBoxValue + "'," + weightBoxValue + ", " + marksBoxValue + ", '" + courseDistrid+ "')";
         try
         {
@@ -194,7 +186,7 @@ public partial class marksDistribution : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            Label2.Text = "Couldn't complete operation. Invalid distribution."+ ex;
+            Label2.Text = "Couldn't complete operation. Invalid distribution.";
         }
 
         con.Close();
@@ -203,40 +195,7 @@ public partial class marksDistribution : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        SqlConnection con = new SqlConnection("Data Source=LAPTOP-BQUID6TK\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
-        con.Open();
-        string courseDistrid = Request.Cookies["courseDistrid"].Value;
-
-        TableRow newRow = new TableRow();
-        TableCell newCell1 = new TableCell();
-        TableCell newCell2 = new TableCell();
-        TableCell newCell3 = new TableCell();
-        TableCell newCell4 = new TableCell();
-        newCell4.Text = courseDistrid;
-
-        TextBox evalBox = new TextBox();
-        evalBox.ID = "evalBox";
-        newCell1.Controls.Add(evalBox);
-
-        TextBox weightBox = new TextBox();
-        weightBox.ID = "weightBox";
-        weightBox.Attributes["type"] = "number";
-        newCell2.Controls.Add(weightBox);
-
-        TextBox marksBox = new TextBox();
-        marksBox.ID = "marksBox";
-        marksBox.Attributes["type"] = "number";
-        newCell3.Controls.Add(marksBox);
-
-        newRow.Cells.Add(newCell1);
-        newRow.Cells.Add(newCell2);
-        newRow.Cells.Add(newCell3);
-        newRow.Cells.Add(newCell4);
-        table.Rows.Add(newRow);
-        rowCount++;
-        PlaceHolder1.Controls.Add(table);
-        
-
+        Response.Redirect("facultyProfile.aspx");
 
     }
 }
