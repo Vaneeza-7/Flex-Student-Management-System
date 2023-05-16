@@ -13,7 +13,7 @@
         #filldate {
             height: 29px;
             width: 230px;
-            margin-left: 66px;
+            margin-left: 0px;
         }
         #teacherName1 {
             height: 31px;
@@ -28,17 +28,35 @@
             <h2 style="color:white">Teacher Assessment Form</h2>
             <hr />
             
-            <input type="date" id="filldate" name="Date"/>&nbsp;
-            <label for="filldate" style="color:white" >Date</label><br />
+           <p style="left: auto; right: auto; text-align: center;">
+
+                &nbsp;
+            <label for="filldate" style="color:white; font-family:'Times New Roman'" >Select Date</label><br />
+        <input type="date" id="filldate" name="filldate" style="font-family: 'Times New Roman', Times, serif; font-size: medium; height: 45px; left: auto; right: auto; width: 377px;"/>
             <br />
-            <input type="text" id="teacherName1" name="teacherName1"/>            
-            <label for="teacherName1" style="color:white" >Teacher Name</label><br />
-            <br />
-            <br />
-            <label for="DropDownList1" style="color:white" >Course Name</label><br />
-            <asp:DropDownList ID="DropDownList1" runat="server" Height="30px" style="margin-left: 20px">
+             <label for="DropDownList1" style="color:white; font-family:'Times New Roman'" >Select Course</label><br />
+            <asp:DropDownList ID="DropDownList1" runat="server" Font-Names="Times New Roman" Font-Size="Medium" Height="45px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="377px" >
             
             </asp:DropDownList>
+           
+            <br />
+            <br />
+                <label for="DropDownList2" style="color:white; font-family:'Times New Roman'" >Select Section</label><br />
+            <asp:DropDownList ID="DropDownList2" runat="server" Font-Names="Times New Roman" Font-Size="Medium" Height="45px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="377px" >
+            
+            </asp:DropDownList>
+            <br />
+            <br />
+           
+
+            <label for="DropDownList3" style="color:white; font-family:'Times New Roman'" >Select Teacher</label><br />
+            <asp:DropDownList ID="DropDownList3" runat="server" Font-Names="Times New Roman" Font-Size="Medium" Height="45px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="377px" >
+            
+            </asp:DropDownList>
+           
+
+            </p>
+
             
             <h3 style="color:white">Please rate your teacher based on the following criteria:</h3>
             <div>
