@@ -24,11 +24,11 @@ public partial class facultyProfile : System.Web.UI.Page
         }
         else if (value == "Manage Marks")
         {
-            Response.Redirect("manageMarks.aspx");
+            Response.Redirect("manageMarksOptions.aspx");
         }
         else if (value == "Set Marks Distribution")
         {
-            Response.Redirect("marksDistribution.aspx");
+            Response.Redirect("marksOptions.aspx");
         }
         else if (value == "View Feedback")
         {
