@@ -1,5 +1,9 @@
 # Flex Student Management System
 
+<p align="center">
+  <img src="https://github.com/Vaneeza-7/Flex-Student-Managament-System/blob/main/videoWalkthrough_AdobeExpress%20(2).gif" alt="Demo" width="400" height="300" />
+</p>
+
 Flex is a student management system built using ASP.NET for the frontend and C# for the backend. It is a web-based application designed to streamline various administrative tasks related to student management. It provides a user-friendly interface for managing student information, courses, attendance, feedback, marks and generating reports.  Moreover, it offers a range of features including assigning instructors to courses, marks or evaluation management, student transcript, and student registration into courses and sections. This repository contains the source code and database schema for the Flex project.
 
 ## Features
