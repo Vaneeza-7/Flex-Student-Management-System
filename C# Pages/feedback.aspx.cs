@@ -100,8 +100,15 @@ public partial class feedback : System.Web.UI.Page
 
         comments = comments.Replace("'", "''");
         string query = "insert into feedback (tId, cId, stId, comments, fdate, metric) values ('" + teachId + "','" + courId + "', '" + userId + "', '" + comments+ "', '" + dated + "', " + totalScore + ") ";
-        SqlCommand command = new SqlCommand(query, con);
-        command.ExecuteNonQuery();
+        try
+        {
+            SqlCommand command = new SqlCommand(query, con);
+            command.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            Label1.Text = "Feedback already submitted.";
+        }
         con.Close();
 
     }

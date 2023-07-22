@@ -182,6 +182,7 @@
             <hr />
             <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" BackColor="White" BorderStyle="Double" ForeColor="#000066" Height="44px" Width="125px" />
         </div>
+             <asp:Label ID="Label1" runat="server" ForeColor="Red"></asp:Label>
     </form>
 </body>
 </html>
