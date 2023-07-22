@@ -90,6 +90,46 @@ public partial class OfferCourses : System.Web.UI.Page
             table.Rows.Add(dataRow);
         }
 
+        TableRow newRow = new TableRow();
+        TableCell newCell1 = new TableCell();
+        TableCell newCell2 = new TableCell();
+        TableCell newCell3 = new TableCell();
+        TableCell newCell4 = new TableCell();
+        TableCell newCell5 = new TableCell();
+
+
+        TextBox evalBox = new TextBox();
+        evalBox.ID = "evalBox";
+        newCell1.Controls.Add(evalBox);
+
+        TextBox weightBox = new TextBox();
+        weightBox.ID = "weightBox";
+        newCell2.Controls.Add(weightBox);
+
+        TextBox marksBox = new TextBox();
+        marksBox.ID = "marksBox";
+        newCell3.Controls.Add(marksBox);
+
+        TextBox crdtsBox = new TextBox();
+        crdtsBox.ID = "crdtsBox";
+        crdtsBox.Attributes["type"] = "number";
+        newCell4.Controls.Add(crdtsBox);
+
+        Button addCourse = new Button();
+        addCourse.ID = "addCourse";
+        addCourse.Text = "Add Course";
+        addCourse.Click += new EventHandler(DynamicButton_Click);
+        newCell5.Controls.Add(addCourse);
+
+        newRow.Cells.Add(newCell1);
+        newRow.Cells.Add(newCell2);
+        newRow.Cells.Add(newCell3);
+        newRow.Cells.Add(newCell4);
+        newRow.Cells.Add(newCell5); 
+        table.Rows.Add(newRow);
+
+
+
         table.CssClass = "custom-table";
         table.Style.Add("width", "800px");
         table.Style.Add("height", "500px");
@@ -114,7 +154,7 @@ public partial class OfferCourses : System.Web.UI.Page
         string userId = Request.Cookies["userId"].Value;
         List<string> code = new List<string>();
         int codesIndex = 0;
-        for (int i = 0; i < table.Rows.Count; i++)
+        for (int i = 1; i < table.Rows.Count; i++)///
         {
                 // Get the checkbox in the current row
                 CheckBox chk = (CheckBox)table.Rows[i].FindControl("checkBox" + codesIndex.ToString());
@@ -125,9 +165,11 @@ public partial class OfferCourses : System.Web.UI.Page
                 //if (table.Rows[i].Cells.Count > 0)
                 //{
                     code.Add(table.Rows[i].Cells[0].Text);
-                    codesIndex++;
+                    
                 //}
             }
+
+            codesIndex++;
         }
             
         
@@ -147,4 +189,83 @@ public partial class OfferCourses : System.Web.UI.Page
 
 
     }
+
+    protected void DynamicButton_Click(object sender, EventArgs e)
+    {
+        SqlConnection con = new SqlConnection("Data Source=LAPTOP-BQUID6TK\\SQLEXPRESS;Initial Catalog=flex;Integrated Security=True");
+        con.Open();
+        string userId = Request.Cookies["userId"].Value;
+
+        string textBoxValue = "";
+        string weightBoxValue = "";
+        string marksBoxValue = "";
+        int crdtsBoxValue = 0;
+
+        //used headerRow so it is not included in count then rows start from 0 for non-head
+        //for (int i = 0; i < table.Rows.Count+1; i++)
+        //{
+        //    // Get the checkbox in the current row
+        //    TextBox textbox = (TextBox)table.Rows[i].Cells[0].FindControl("evalBox");
+        //    if (textbox != null)
+        //    {
+        //        textBoxValue = textbox.Text; 
+        //    }
+        //    TextBox weightbox = (TextBox)table.Rows[i].Cells[1].FindControl("weightBox");
+        //    if (weightbox != null)
+        //    {
+        //        weightBoxValue = int.Parse(weightbox.Text);
+        //    }
+        //    TextBox marksbox = (TextBox)table.Rows[i].Cells[2].FindControl("marksBox");
+        //    if (marksbox != null)
+        //    {
+        //        marksBoxValue = int.Parse(marksbox.Text);
+
+        //    }
+
+
+        //}
+        if (table.Rows.Count > 0)
+        {
+            int rowIdx = table.Rows.Count-1 ;
+            TextBox myTextBox = (TextBox)table.Rows[rowIdx].Cells[0].FindControl("evalBox");
+
+            if (myTextBox != null)
+            {
+                textBoxValue = myTextBox.Text;
+            }
+
+            TextBox weightBox = (TextBox)table.Rows[rowIdx].Cells[1].FindControl("weightBox");
+            if (weightBox != null)
+            {
+                weightBoxValue = weightBox.Text;
+            }
+
+            TextBox marksBox = (TextBox)table.Rows[rowIdx].Cells[2].FindControl("marksBox");
+            if (marksBox != null)
+            {
+                marksBoxValue = marksBox.Text;
+            }
+
+            TextBox crdtsBox = (TextBox)table.Rows[rowIdx].Cells[3].FindControl("crdtsBox");
+            if (crdtsBox != null)
+            {
+                crdtsBoxValue = int.Parse(crdtsBox.Text);
+            }
+        }
+
+        string query = "insert into course (code, cname, ctype, crdHrs) values ('" + textBoxValue + "','" + weightBoxValue + "', '" + marksBoxValue + "', '" + crdtsBoxValue + "')";
+        try
+        {
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            Label4.Text = "Couldn't complete operation. Invalid course code. ";
+        }
+
+         con.Close();
+
+    }
+
 }
